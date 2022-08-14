@@ -1,0 +1,73 @@
+.orderItem_picBox{
+   display: inline-block; /*行内以块形式排版*/
+   padding-right: 10px;
+
+}
+
+.orderItem_pic{
+    width: 70px;
+    height: 70px;
+}
+
+.orderItem_content{
+    display: inline-block;
+    width: 87%;
+}
+
+.orderItem_Name{
+    max-width: 80%;
+    color: black;
+    box-sizing: border-box; /*padding+border+box*/
+    overflow: hidden; /*隐藏溢出部分*/
+    text-overflow: ellipsis; /*文本溢出部分省略号*/
+    white-space: nowrap; /*禁止自动换行*/
+    text-align: initial; /*对齐方式*/
+}
+
+.orderItem_shop{
+    color: gray;
+    box-sizing: border-box; /*padding+border+box*/
+    overflow: hidden; /*隐藏溢出部分*/
+    text-overflow: ellipsis; /*文本溢出部分省略号*/
+    white-space: nowrap; /*禁止自动换行*/
+    text-align: initial; /*对齐方式*/
+}
+
+.orderItem_commentArea{
+    display: flex;
+    justify-content: space-between; /* 均匀排列每个元素,首个元素放置于起点，末尾元素放置于终点 */
+
+}
+
+.orderItem_price{
+    color: gray;
+
+}
+
+.orderItem_button{
+    color: white;
+
+}
+
+.orderItem_button--grey{
+    background-color: gray;
+
+}
+
+.orderItem_button--red{
+    background-color: brown;
+
+}
+
+.orderItem_commentBox{
+    width: 100%;
+}
+
+.orderItem_comment{
+    width: 98%;
+
+}
+
+.star{
+    color: brown;
+}

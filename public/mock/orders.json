@@ -1,0 +1,34 @@
+[
+    {
+        "id":1,
+        "product":"商品1",
+        "picture":"logo192.png",
+        "shop":"商户1",
+        "price":99,
+        "ifCommented":true
+    },
+    {
+        "id":2,
+        "product":"商品2",
+        "picture":"logo192.png",
+        "shop":"商户2",
+        "price":0,
+        "ifCommented":true
+    },
+    {
+        "id":3,
+        "product":"商品3",
+        "picture":"logo192.png",
+        "shop":"商户3",
+        "price":999,
+        "ifCommented":false
+    },
+    {
+        "id":4,
+        "product":"商品4",
+        "picture":"logo192.png",
+        "shop":"商户4",
+        "price":9999,
+        "ifCommented":false
+    }
+]
