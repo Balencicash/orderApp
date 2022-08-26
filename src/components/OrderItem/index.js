@@ -1,22 +1,24 @@
 import React, { Component } from 'react';
-import { Button } from 'antd';
-import { Rate } from 'antd';
+import { Button,Input,Rate } from 'antd';
 import './style.css';
 import '/node_modules/antd/dist/antd.css';
+const { TextArea } = Input;
 class OrderItem extends Component {
     constructor(props)
     {
         super(props);
         this.state={
             editing:false,
-            //stars:props.data.value || 0,
+            rate:props.data.rate || 0,
             comment:props.data.comment || "",
+            
         };
     }
 
 
     render() {
         const{picture,product,shop,price,ifCommented}=this.props.data;
+        const { rate } = this.state;
         return (
             <div className='orderItem'> {/* 商品框架 */}
                 <div className='orderItem_picBox'> {/* 图片盒子 */}
@@ -31,7 +33,7 @@ class OrderItem extends Component {
                             {
                                 ifCommented ? 
                                 (
-                                    <Button className='orderItem_button--grey'>
+                                    <Button className='orderItem_button--grey' onClick={this.handleOpenEditArea}>
                                         已评价
                                     </Button>
                                 ) : 
@@ -44,32 +46,31 @@ class OrderItem extends Component {
                         </div>
                     </div> 
                 </div>
-                {this.state.editing ? this.renderEditArea() : null}
+                {this.state.editing ? this.renderEditArea(rate,ifCommented) : null}
             </div>
         );
     }
-    renderEditArea(){
+    renderEditArea(rate,ifCommented){
         return(
             <div className='orderItem_commentBox'> {/* 评论框 */}
-                <textarea 
-                    onChange={this.handleCommentChange}
-                    value={this.state.comment}
-                    rows={4}
-                    className='orderItem_comment'
-                />
-                {/* <Rate allowHalf defaultValue={2.5} onChange={this.handleClickStars}/> */}
+                <TextArea 
+                disabled={ifCommented}
+                rows={4}
+                onChange={this.handleCommentChange}
+                value={this.state.comment}
+                 />
                 
-                <Button onClick={this.handleSubmitComment}>提交</Button>
+                <Rate allowHalf disabled={ifCommented} value={rate} onChange={this.handleClickStars}/>
+                
+                <Button disabled={ifCommented} onClick={this.handleSubmitComment}>提交</Button>
                 <Button onClick={this.handleCancelComment}>取消</Button>
             </div>
         );
     }
-    // handleClickStars = () =>
-    // {
-    //     this.setState(
-    //         {stars:console.log(this.value),}
-    //     );
-    // }
+    handleClickStars = (value) =>
+    {
+        this.setState({ rate: value });
+    }
     handleOpenEditArea = () => //评论框开关判断
     {
         this.setState(
@@ -95,12 +96,13 @@ class OrderItem extends Component {
     handleSubmitComment = () => //提交
     {
         const {id}=this.props.data;
-        const {comment}=this.state;
+        const {comment,rate}=this.state;
         this.setState(
             {editing:false,}
         );
-        this.props.onSubmit(id,comment);
+        this.props.onSubmit(id,comment,rate);
     };
+    
 }
 
 

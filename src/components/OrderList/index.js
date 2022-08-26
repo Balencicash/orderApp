@@ -15,6 +15,7 @@ class OrderList extends Component {
             {
                 res.json().then((data)=>
                 {
+                    console.log(data);
                     this.setState({
                         data,
                     });
@@ -36,20 +37,24 @@ class OrderList extends Component {
             </div>
         );
     }
-    handleSubmit=(id,comment)=>
+    handleSubmit=(id,comment,rate)=>
     {
+        console.log(id,comment,rate);
+        console.log(this.state.data);
         const newData=this.state.data.map((item)=>
         {
             return item.id===id ?
             {
                 ...item,
                 comment,
+                rate,
                 ifCommented:true,
             }
             : item;
         });
+        console.log(newData);
         this.setState({
-            date: newData,
+            data: newData,
         });
     }
 }
